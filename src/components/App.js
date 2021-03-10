@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import Home from "../routeComponents/Home";
+import Navmenu from "./Navmenu";
 import AuthRouter from "../routeComponents/auth/AuthRouter";
 
 import { AuthContextComponent } from "../contexts/authContext";
@@ -9,6 +10,7 @@ import { AuthContextComponent } from "../contexts/authContext";
 function App() {
   return (
     <BrowserRouter>
+      <Navmenu />
       <AuthContextComponent>
         <Switch>
           <Route exact path="/" component={Home} />
