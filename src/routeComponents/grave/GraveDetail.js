@@ -12,7 +12,7 @@ import "../../assets/styles/image.css";
 
 function GraveDetail() {
   const authContext = useContext(AuthContext);
-  const { grave } = useParams();
+  const { cemetery, grave } = useParams();
   const [graveData, setGrave] = useState({
     description: "",
     type: "Subterrânea",
@@ -41,10 +41,12 @@ function GraveDetail() {
         <Link
           style={{ width: "120px" }}
           className="btn btn-secondary mt-5"
-          to={`/${grave}/new-buried`}
+          to={`/cemetery/${cemetery}/grave/${grave}/new-buried`}
         >
           Adicionar Sepultado
         </Link>
+      </div>
+      <div className="brick p-1-2 list-group m-5">
         {graveData.buried
           ? graveData.buried.map((buried) => (
               <Link

@@ -4,6 +4,7 @@ import { useHistory, useParams } from "react-router-dom";
 import api from "../../apis/api";
 import { AuthContext } from "../../contexts/authContext";
 
+import ConfirmationModal from "../../components/ConfirmationModal";
 import BuriedForm from "./BuriedForm";
 
 function NewBuried() {
@@ -20,8 +21,10 @@ function NewBuried() {
     authorization: "",
     situation: "",
   });
-  const { grave } = useParams();
+  const { cemetery, grave } = useParams();
   // const history = useHistory();
+  const [showModal, setShowModal] = useState(false);
+
   const authContext = useContext(AuthContext);
 
   function handleChange(event) {
@@ -59,6 +62,7 @@ function NewBuried() {
         ...state,
         picture: uploadImageUrl,
       });
+      setShowModal(true);
       console.log(response);
 
       // history.push("/graves");
@@ -77,6 +81,15 @@ function NewBuried() {
         state={state}
         onChange={handleChange}
         handleSubmit={handleSubmit}
+      />
+      <ConfirmationModal
+        show={showModal}
+        title={`${state.name} added!`}
+        mainMessage="Do you wish to add another burial?"
+        closeModal="Add another burial"
+        redirectPageButton="See grave page"
+        handleClose={() => setShowModal(false)}
+        action={`/cemetery/${cemetery}/grave/${grave}`}
       />
     </div>
   );
