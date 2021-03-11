@@ -10,6 +10,7 @@ import CemeteryDetail from "../routeComponents/cemetery/CemeteryDetail";
 import NewGrave from "../routeComponents/grave/NewGrave";
 import GraveDetail from "../routeComponents/grave/GraveDetail";
 import NewBuried from "../routeComponents/buried/NewBuried";
+import BuriedDetail from "../routeComponents/buried/BuriedDetail";
 
 import { AuthContextComponent } from "../contexts/authContext";
 
@@ -23,16 +24,27 @@ function App() {
           <Route path="/auth" component={AuthRouter} />
           <Route path="/cemetery/new-cemetery" component={NewCemetery} />
           <Route
+            exact
+            path="/cemetery/:cemetery/grave/:grave/buried/:id"
+            component={BuriedDetail}
+          />
+          <Route
+            exact
             path="/cemetery/:cemetery/grave/:grave/new-buried"
             component={NewBuried}
           />
           <Route
+            exact
             path="/cemetery/:cemetery/grave/:grave"
             component={GraveDetail}
           />
-          <Route path="/cemetery/:cemetery/new-grave" component={NewGrave} />
-          <Route path="/cemetery/:cemetery" component={CemeteryDetail} />
-          <Route path="/cemetery" component={CemeteryList} />
+          <Route
+            exact
+            path="/cemetery/:cemetery/new-grave"
+            component={NewGrave}
+          />
+          <Route exact path="/cemetery/:cemetery" component={CemeteryDetail} />
+          <Route exact path="/cemetery" component={CemeteryList} />
         </Switch>
       </AuthContextComponent>
     </BrowserRouter>

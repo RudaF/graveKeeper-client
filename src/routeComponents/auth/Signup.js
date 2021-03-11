@@ -2,6 +2,16 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import api from "../../apis/api";
 
+const form = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  color: "white",
+  width: "20%",
+  fontFamily: "Playfair Display, serif",
+};
+
 function Signup(props) {
   const [state, setState] = useState({ name: "", password: "", email: "" });
   const [errors, setErrors] = useState({
@@ -32,11 +42,13 @@ function Signup(props) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} style={form}>
       <h1>Signup!</h1>
 
       <div>
-        <label htmlFor="signupFormName">Name</label>
+        <label className="mr-2" htmlFor="signupFormName">
+          Nome
+        </label>
         <input
           type="text"
           name="name"
@@ -48,7 +60,9 @@ function Signup(props) {
       </div>
 
       <div>
-        <label htmlFor="signupFormEmail">E-mail Address</label>
+        <label className="mr-1" htmlFor="signupFormEmail">
+          E-mail
+        </label>
         <input
           type="email"
           name="email"
@@ -60,7 +74,9 @@ function Signup(props) {
       </div>
 
       <div>
-        <label htmlFor="signupFormPassword">Password</label>
+        <label className="mr-2" htmlFor="signupFormPassword">
+          Senha
+        </label>
         <input
           type="password"
           name="password"
@@ -72,11 +88,18 @@ function Signup(props) {
       </div>
 
       <div>
-        <button type="submit">Signup!</button>
-
-        <Link to="/auth/login">
-          Already have an account? Click here to login.
-        </Link>
+        <button
+          className="btn mt-2 mb-5 "
+          style={{ backgroundColor: "#c8955b", color: "white" }}
+          type="submit"
+        >
+          Signup!
+        </button>
+        <div>
+          <Link to="/auth/login" style={{ color: "inherit" }}>
+            Already have an account? Click here to login.
+          </Link>
+        </div>
       </div>
     </form>
   );

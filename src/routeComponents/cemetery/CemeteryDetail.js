@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import { AuthContext } from "../../contexts/authContext";
 import { useContext } from "react";
 
@@ -19,6 +19,7 @@ function CemeteryDetail() {
     graves: [],
     maxCapacity: 0,
   });
+  const history = useHistory();
 
   useEffect(() => {
     async function fetchCemetery() {
@@ -35,16 +36,27 @@ function CemeteryDetail() {
 
   return (
     <div className="full-height d-flex dark-bg wall ">
+      <button
+        onClick={() => {
+          history.go(-1);
+        }}
+        style={{ backgroundColor: "#191926", border: "none" }}
+      >
+        <i
+          className="mb-3 fas fa-angle-left"
+          style={{ fontSize: "5em", color: "#c8955b" }}
+        ></i>
+      </button>
       <div className="brick p-1-2 dark-bg m-5 d-flex flex-column">
         <h1>{cemeteryData.name}</h1>
         <p className="m-3">{cemeteryData.address}</p>
 
         <Link
-          style={{ backgroundColor: "#c8955b", border: "none", width: "10%" }}
+          style={{ backgroundColor: "#c8955b", border: "none", width: "20%" }}
           className="btn btn-secondary mt-5"
           to={`/cemetery/${cemetery}/new-grave`}
         >
-          Adicionar Jazigo
+          Novo Jazigo
         </Link>
       </div>
       <div className="brick p-1-2 list-group m-5">
@@ -69,6 +81,19 @@ function CemeteryDetail() {
                   <h5 className="mb-1">{grave.identifier}</h5>
                 </div>
                 <p className="mb-1">{grave.description}</p>
+              </div>
+              <div>
+                <p>
+                  Ocupação:
+                  {Array.from({ length: grave.maxCapacity }).map((_, i) => (
+                    <i
+                      className="fas fa-user ml-1"
+                      style={{
+                        color: i < grave.buried.length ? "red" : "green",
+                      }}
+                    ></i>
+                  ))}
+                </p>
               </div>
             </div>
           </Link>
