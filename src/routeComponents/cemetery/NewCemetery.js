@@ -1,9 +1,10 @@
 import { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 
-import api from "../../apis/petgram-api";
+import api from "../../apis/api";
 import { AuthContext } from "../../contexts/authContext";
 
+import ConfirmationModal from "../../components/ConfirmationModal";
 import CemeteryForm from "./CemeteryForm";
 
 function NewCemetery() {
@@ -11,29 +12,53 @@ function NewCemetery() {
     name: "",
     address: "",
     maxCapacity: 0,
-    employess: 0,
+    employees: 0,
+    rows: 0,
+    columns: 0,
+    picture: "",
   });
+
+  const [showModal, setShowModal] = useState(false);
 
   const history = useHistory();
   const authContext = useContext(AuthContext);
 
   function handleChange(event) {
-    const stateBkp = { ...state };
-    stateBkp[event.target.name] = event.target.value;
+    if (event.target.files) {
+      setState({ ...state, [event.target.name]: event.target.files[0] });
+    } else {
+      const stateBkp = { ...state };
+      stateBkp[event.target.name] = event.target.value;
 
-    setState(stateBkp);
+      setState(stateBkp);
+    }
+  }
+
+  async function handleFileUpload(file) {
+    try {
+      const uploadData = new FormData();
+
+      uploadData.append("picture", file);
+
+      const response = await api.post("/upload", uploadData);
+
+      return response.data.fileUrl;
+    } catch (err) {
+      console.error(err);
+    }
   }
 
   async function handleSubmit(event) {
     event.preventDefault();
 
     try {
-      const response = await api.post("/cemetery", {
+      const uploadImageUrl = await handleFileUpload(state.picture);
+      const response = await api.post("/cemetery/new-cemetery", {
         ...state,
+        picture: uploadImageUrl,
       });
       console.log(response);
-
-      history.push("/cemetery");
+      setShowModal(true);
     } catch (err) {
       console.error(err);
     }
@@ -46,6 +71,15 @@ function NewCemetery() {
         state={state}
         onChange={handleChange}
         handleSubmit={handleSubmit}
+      />
+      <ConfirmationModal
+        show={showModal}
+        title={`${state.name} added!`}
+        mainMessage="Do you wish to add another cemetery?"
+        closeModal="Add another cemetery"
+        redirectPageButton="See cemeteries page"
+        handleClose={() => setShowModal(false)}
+        action={`/cemetery`}
       />
     </div>
   );

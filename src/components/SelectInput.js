@@ -10,7 +10,7 @@ function SelectInput(props) {
         value={props.value}
         onChange={props.onChange}
       >
-        <option disabled>Select a species</option>
+        <option disabled>Select a type of grave</option>
         {props.options.map((option) => (
           <option key={option.value} value={option.value}>
             {option.text}

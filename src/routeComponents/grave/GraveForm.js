@@ -3,18 +3,18 @@ import SelectInput from "../../components/SelectInput";
 
 const graveOptions = [
   { value: "Subterrânea", text: "Subterrânea" },
-  { value: "Superfícia", text: "Superfície" },
+  { value: "Superfície", text: "Superfície" },
 ];
 
-function NewGrave() {
+function NewGrave(props) {
   return (
     <form onSubmit={props.handleSubmit}>
       <TextInput
-        label="Location"
+        label="Identifier"
         type="text"
         id="graveFormLocation"
-        name="location"
-        value={props.state.location}
+        name="identifier"
+        value={props.state.identifier}
         onChange={props.onChange}
       />
 

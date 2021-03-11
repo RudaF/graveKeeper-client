@@ -1,6 +1,7 @@
 import TextInput from "../../components/TextInput";
+import { Form } from "react-bootstrap";
 
-function CemeteryForm() {
+function CemeteryForm(props) {
   return (
     <form onSubmit={props.handleSubmit}>
       <TextInput
@@ -36,6 +37,15 @@ function CemeteryForm() {
         id="cemeteryFormEmployees"
         name="employees"
         value={props.state.employees}
+        onChange={props.onChange}
+      />
+
+      <TextInput
+        label="Profile Picture"
+        type="file"
+        id="petFormPicture"
+        name="picture"
+        className="formControl"
         onChange={props.onChange}
       />
 

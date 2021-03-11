@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
-import api from "../../apis/petgram-api";
+import api from "../../apis/api";
 import { AuthContext } from "../../contexts/authContext";
 
 import BuriedForm from "./BuriedForm";
@@ -20,8 +20,8 @@ function NewBuried() {
     authorization: "",
     situation: "",
   });
-
-  const history = useHistory();
+  const { grave } = useParams();
+  // const history = useHistory();
   const authContext = useContext(AuthContext);
 
   function handleChange(event) {
@@ -33,10 +33,6 @@ function NewBuried() {
 
       setState(stateBkp);
     }
-  }
-
-  function handleCheckboxChange(event) {
-    setState({ ...state, [event.target.name]: !state[event.target.name] });
   }
 
   async function handleFileUpload(file) {
@@ -59,26 +55,27 @@ function NewBuried() {
     try {
       const uploadImageUrl = await handleFileUpload(state.picture);
 
-      const response = await api.post("/pet", {
+      const response = await api.post(`/${grave}/buried/new-buried`, {
         ...state,
-        age: Number(state.age),
         picture: uploadImageUrl,
       });
       console.log(response);
 
-      history.push("/my-pets");
+      // history.push("/graves");
     } catch (err) {
       console.error(err);
     }
   }
 
   return (
-    <div className="m-2">
+    <div
+      className="m-5 d-flex flex-column justify-content-center"
+      style={{ color: "white", width: "100vh" }}
+    >
       <h1>New Buried</h1>
-      <PetForm
+      <BuriedForm
         state={state}
         onChange={handleChange}
-        onCheckboxChange={handleCheckboxChange}
         handleSubmit={handleSubmit}
       />
     </div>

@@ -1,0 +1,11 @@
+.img-size {
+  max-height: 120px;
+  object-fit: cover;
+}
+
+img {
+  float: left;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}

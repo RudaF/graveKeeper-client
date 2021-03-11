@@ -9,7 +9,7 @@ const buriedOptions = [
   { value: "Transferido", text: "Transferido" },
 ];
 
-function NewBuried() {
+function NewBuried(props) {
   return (
     <form onSubmit={props.handleSubmit}>
       <TextInput
@@ -51,7 +51,7 @@ function NewBuried() {
         type="file"
         id="buriedFormPicture"
         name="picture"
-        value={props.state.picture}
+        className="formControl"
         onChange={props.onChange}
       />
       <TextInput
@@ -95,10 +95,10 @@ function NewBuried() {
         onChange={props.onChange}
       />
       <SelectInput
-        label="Type"
-        id="buriedFormType"
-        name="type"
-        value={props.state.type}
+        label="Situation"
+        id="buriedFormSituation"
+        name="situation"
+        value={props.state.situation}
         onChange={props.onChange}
         options={buriedOptions}
       />

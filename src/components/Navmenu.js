@@ -1,22 +1,34 @@
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
+import { AuthContext } from "../contexts/authContext";
+import { useContext } from "react";
+import { useParams } from "react-router-dom";
 
-function Navmenu() {
+function Navmenu(props) {
+  const authContext = useContext(AuthContext);
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-      <Navbar.Brand href="#home">GraveKeeper</Navbar.Brand>
+    <Navbar collapseOnSelect expand="lg" bg="light">
+      <Navbar.Brand href="/">GraveKeeper</Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
-        <Nav className="mr-auto">
-          <Nav.Link href="/">Home</Nav.Link>
-          <Nav.Link href="/cemetery">Cemetery</Nav.Link>
-          <NavDropdown title="Burials" id="collasible-nav-dropdown">
-            <NavDropdown.Item href="/graves">Burials list</NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item href="/graves/add-grave">
-              Add new Burial
-            </NavDropdown.Item>
-          </NavDropdown>
-        </Nav>
+        {authContext.loggedInUser.user._id ? (
+          <Nav className="mr-auto">
+            <Nav.Link href="/cemetery">Cemetery</Nav.Link>
+          </Nav>
+        ) : (
+          ""
+        )}
+        {authContext.loggedInUser.user._id ? (
+          <Nav>
+            <Nav.Link href="/auth/logout">Logout</Nav.Link>
+          </Nav>
+        ) : (
+          <Nav>
+            <Nav.Link href="/auth/signup">Signup</Nav.Link>
+            <Nav.Link eventKey={2} href="/auth/login">
+              Login
+            </Nav.Link>
+          </Nav>
+        )}
       </Navbar.Collapse>
     </Navbar>
   );
