@@ -6,6 +6,15 @@ import { AuthContext } from "../../contexts/authContext";
 
 import ConfirmationModal from "../../components/ConfirmationModal";
 import CemeteryForm from "./CemeteryForm";
+const form = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  color: "white",
+  width: "50%",
+  fontFamily: "Playfair Display, serif",
+};
 
 function NewCemetery() {
   const [state, setState] = useState({
@@ -65,7 +74,7 @@ function NewCemetery() {
   }
 
   return (
-    <div className="m-2">
+    <div className="m-5 d-flex flex-column justify-content-center" style={form}>
       <h1>New Cemetery</h1>
       <CemeteryForm
         state={state}

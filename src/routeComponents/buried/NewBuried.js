@@ -7,6 +7,16 @@ import { AuthContext } from "../../contexts/authContext";
 import ConfirmationModal from "../../components/ConfirmationModal";
 import BuriedForm from "./BuriedForm";
 
+const form = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  color: "white",
+  width: "50%",
+  fontFamily: "Playfair Display, serif",
+};
+
 function NewBuried() {
   const [state, setState] = useState({
     name: "",
@@ -72,11 +82,8 @@ function NewBuried() {
   }
 
   return (
-    <div
-      className="m-5 d-flex flex-column justify-content-center"
-      style={{ color: "white", width: "100vh" }}
-    >
-      <h1>New Buried</h1>
+    <div className="m-5 d-flex flex-column justify-content-center" style={form}>
+      <h1>Novo Sepultamento</h1>
       <BuriedForm
         state={state}
         onChange={handleChange}

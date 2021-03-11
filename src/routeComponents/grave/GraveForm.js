@@ -10,7 +10,7 @@ function NewGrave(props) {
   return (
     <form onSubmit={props.handleSubmit}>
       <TextInput
-        label="Identifier"
+        label="Identificador"
         type="text"
         id="graveFormLocation"
         name="identifier"
@@ -19,7 +19,7 @@ function NewGrave(props) {
       />
 
       <SelectInput
-        label="Type"
+        label="Tipo"
         id="graveFormType"
         name="type"
         value={props.state.type}
@@ -28,7 +28,7 @@ function NewGrave(props) {
       />
 
       <TextInput
-        label="Installment"
+        label="Mensalidade"
         type="number"
         id="graveFormInstallment"
         name="installment"
@@ -37,7 +37,7 @@ function NewGrave(props) {
       />
 
       <TextInput
-        label="Capacity"
+        label="Capacidade Máxima"
         type="number"
         id="graveFormCapacity"
         name="maxCapacity"
@@ -46,7 +46,7 @@ function NewGrave(props) {
       />
 
       <TextInput
-        label="Description"
+        label="Descrição"
         type="text"
         id="graveFormDescription"
         name="description"
@@ -54,8 +54,12 @@ function NewGrave(props) {
         onChange={props.onChange}
       />
 
-      <button type="submit" className="btn btn-primary">
-        Save
+      <button
+        type="submit"
+        className="btn btn-primary"
+        style={{ backgroundColor: "#c8955b", border: "none" }}
+      >
+        Salvar
       </button>
     </form>
   );

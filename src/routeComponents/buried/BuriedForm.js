@@ -13,7 +13,7 @@ function NewBuried(props) {
   return (
     <form onSubmit={props.handleSubmit}>
       <TextInput
-        label="Name"
+        label="Nome do sepultado"
         type="text"
         id="buriedFormName"
         name="name"
@@ -22,7 +22,7 @@ function NewBuried(props) {
       />
 
       <TextInput
-        label="dateOfBirth"
+        label="Data de nascimento"
         type="date"
         id="buriedFormDateOfBirth"
         name="dateOfBirth"
@@ -30,7 +30,7 @@ function NewBuried(props) {
         onChange={props.onChange}
       />
       <TextInput
-        label="dateOfDeath"
+        label="Data do óbito"
         type="date"
         id="buriedFormDateOfDeath"
         name="dateOfDeath"
@@ -38,7 +38,7 @@ function NewBuried(props) {
         onChange={props.onChange}
       />
       <TextInput
-        label="Death Certificate"
+        label="Certidão de óbito"
         type="text"
         id="buriedFormCertificate"
         name="deathCertificate"
@@ -47,7 +47,7 @@ function NewBuried(props) {
       />
 
       <TextInput
-        label="Picture"
+        label="Foto"
         type="file"
         id="buriedFormPicture"
         name="picture"
@@ -55,7 +55,7 @@ function NewBuried(props) {
         onChange={props.onChange}
       />
       <TextInput
-        label="Burial Date"
+        label="Data do sepultamento"
         type="date"
         id="buriedFormBurialDate"
         name="burialDate"
@@ -63,7 +63,7 @@ function NewBuried(props) {
         onChange={props.onChange}
       />
       <TextInput
-        label="Burial Time"
+        label="Hora do sepultamento"
         type="text"
         id="buriedFormBurialTime"
         name="burialTime"
@@ -71,7 +71,7 @@ function NewBuried(props) {
         onChange={props.onChange}
       />
       <TextInput
-        label="Funeral Home"
+        label="Funerária responsável"
         type="text"
         id="buriedFormFuneralHome"
         name="funeralHome"
@@ -79,7 +79,7 @@ function NewBuried(props) {
         onChange={props.onChange}
       />
       <TextInput
-        label="Funeral Agent"
+        label="Agente funerário"
         type="text"
         id="buriedFormFuneralAgent"
         name="funeralAgent"
@@ -87,7 +87,7 @@ function NewBuried(props) {
         onChange={props.onChange}
       />
       <TextInput
-        label="Authorization"
+        label="Autorização"
         type="text"
         id="buriedFormAuthorization"
         name="authorization"
@@ -95,15 +95,19 @@ function NewBuried(props) {
         onChange={props.onChange}
       />
       <SelectInput
-        label="Situation"
+        label="Situação do sepultamento"
         id="buriedFormSituation"
         name="situation"
         value={props.state.situation}
         onChange={props.onChange}
         options={buriedOptions}
       />
-      <button type="submit" className="btn btn-primary">
-        Save
+      <button
+        type="submit"
+        className="btn btn-primary"
+        style={{ backgroundColor: "#c8955b", border: "none" }}
+      >
+        Salvar
       </button>
     </form>
   );

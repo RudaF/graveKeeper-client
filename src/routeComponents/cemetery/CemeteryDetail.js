@@ -40,7 +40,7 @@ function CemeteryDetail() {
         <p className="m-3">{cemeteryData.address}</p>
 
         <Link
-          style={{ width: "120px" }}
+          style={{ backgroundColor: "#c8955b", border: "none", width: "10%" }}
           className="btn btn-secondary mt-5"
           to={`/cemetery/${cemetery}/new-grave`}
         >
@@ -50,15 +50,16 @@ function CemeteryDetail() {
       <div className="brick p-1-2 list-group m-5">
         {cemeteryData.graves.map((grave) => (
           <Link
+            key={grave._id}
             id={grave._id}
             to={`/cemetery/${cemetery}/grave/${grave._id}`}
-            class="list-group-item list-group-item-action "
+            className="list-group-item list-group-item-action "
             aria-current="true"
           >
             <div className="d-flex align-items-center">
               <i
                 style={{ fontSize: "3em", color: "#c8955B" }}
-                className="fas fa-cross size-9x"
+                className="fas fa-cross"
               ></i>
               <div className="mx-5 mt-4">
                 <div

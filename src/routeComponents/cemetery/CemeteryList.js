@@ -34,7 +34,11 @@ function CemeteryList() {
           aria-current="true"
         >
           <div className="d-flex">
-            <img className="img-size" heigth="100px" src={cemetery.picture} />
+            <img
+              className="img-size"
+              style={{ width: "100px", height: "100px" }}
+              src={cemetery.picture}
+            />
             <div className="mx-5 mt-4">
               <div className="d-flex w-100 justify-content-between">
                 <h5 className="mb-1">{cemetery.name}</h5>

@@ -1,22 +1,50 @@
 import React from "react";
-import { Link } from "react-router-dom";
+
+import saintPaul from "../assets/images/saintPaul.jpg";
+import "../assets/styles/image.css";
+
+import HomeColumns from "../components/HomeColumns";
+import Footer from "../components/Footer";
+
+const divStyle = {
+  width: "100%",
+  height: "1200px",
+  backgroundImage: `url(${saintPaul})`,
+  backgroundSize: "cover",
+};
+const logo = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  color: "#c8955b",
+
+  fontFamily: "Playfair Display, serif",
+};
 
 function Home() {
   return (
-    <div className="text-center">
-      <img
-        src="https://images.unsplash.com/photo-1416958672086-951aa7064010?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1950&q=80"
-        alt="Grave over the sun"
-        width="1000px"
-        className="img-fluid"
-      />
-      {/* <h1>React IronPlate</h1>
-      <p>This is the homepage</p> */}
-      <div className="d-flex flex-column align-items-center">
-        {/* <Link className="btn btn-lg btn-primary" to="/auth/signup">
-          Signup here!
-        </Link> */}
+    <div>
+      <div className="d-flex" style={divStyle}>
+        <div style={logo} className="d-flex flex-column align-items-center">
+          <i
+            className="mb-3 fas fa-place-of-worship"
+            style={{ fontSize: "10em" }}
+          ></i>
+          <h1 style={{ fontSize: "5em" }}>GraveKeeper</h1>
+          <div className="text-wrap fs-4" style={{ width: "50%" }}>
+            <p>
+              Uma gestão de jazigos e sepultamentos ágil, eficaz, confiável e
+              moderna. Para atender estes requisitos, nossa solução de gestão
+              integrada oferece a segurança da tecnologia em nuvem ou local,
+              garantindo alta performance operacional, maior rentabilidade e
+              informações precisas para uma melhor gestão do seu negócio.{" "}
+            </p>
+          </div>
+        </div>
       </div>
+      <HomeColumns />
+      <Footer />
     </div>
   );
 }

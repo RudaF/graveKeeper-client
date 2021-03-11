@@ -12,7 +12,7 @@ function Navmenu(props) {
       <Navbar.Collapse id="responsive-navbar-nav">
         {authContext.loggedInUser.user._id ? (
           <Nav className="mr-auto">
-            <Nav.Link href="/cemetery">Cemetery</Nav.Link>
+            <Nav.Link href="/cemetery">Cemitério</Nav.Link>
           </Nav>
         ) : (
           ""
