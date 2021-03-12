@@ -6,14 +6,21 @@ import api from "../../apis/api";
 import ConfirmationModal from "../../components/ConfirmationModal";
 import BuriedForm from "./BuriedForm";
 
+const divStyle = {
+  width: "100%",
+
+  backgroundSize: "cover",
+};
+
 const form = {
   position: "absolute",
-  top: "50%",
+  top: "60%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  color: "white",
-  width: "50%",
+  color: "black",
+  width: "20%",
   fontFamily: "Playfair Display, serif",
+  backgroundColor: "white",
 };
 
 function NewBuried() {
@@ -79,22 +86,31 @@ function NewBuried() {
   }
 
   return (
-    <div className="m-5 d-flex flex-column justify-content-center" style={form}>
-      <h1>Novo Sepultamento</h1>
-      <BuriedForm
-        state={state}
-        onChange={handleChange}
-        handleSubmit={handleSubmit}
-      />
-      <ConfirmationModal
-        show={showModal}
-        title={`${state.name} added!`}
-        mainMessage="Do you wish to add another burial?"
-        closeModal="Add another burial"
-        redirectPageButton="See grave page"
-        handleClose={() => setShowModal(false)}
-        action={`/cemetery/${cemetery}/grave/${grave}`}
-      />
+    <div className="container">
+      <div className="container d-flex align-items-center mt-5">
+        <div style={divStyle}></div>
+        <div
+          style={{ ...divStyle, ...form }}
+          className="shadow-lg p-3 mb-5 bg-body rounded"
+        >
+          <h1>Novo Sepultamento</h1>
+          <BuriedForm
+            state={state}
+            onChange={handleChange}
+            handleSubmit={handleSubmit}
+          />
+          <ConfirmationModal
+            show={showModal}
+            title={`${state.name} added!`}
+            mainMessage="Do you wish to add another burial?"
+            closeModal="Add another burial"
+            redirectPageButton="See grave page"
+            handleClose={() => setShowModal(false)}
+            action={`/cemetery/${cemetery}/grave/${grave}`}
+          />
+        </div>
+        <div style={divStyle}></div>
+      </div>
     </div>
   );
 }
