@@ -23,7 +23,6 @@ function GraveDetail() {
   useEffect(() => {
     async function fetchGrave() {
       try {
-        console.log("oi");
         const response = await api.get(`/grave/${grave}`);
         console.log(response);
         setGrave({ ...response.data });
