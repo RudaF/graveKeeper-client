@@ -84,6 +84,7 @@ function CemeteryDetail() {
                   Ocupação:
                   {Array.from({ length: grave.maxCapacity }).map((_, i) => (
                     <i
+                      key={i}
                       className="fas fa-user ml-1"
                       style={{
                         color: i < grave.buried.length ? "red" : "green",

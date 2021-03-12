@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 
 import api from "../../apis/api";
 
@@ -38,7 +38,7 @@ function NewBuried() {
     situation: "",
   });
   const { cemetery, grave } = useParams();
-
+  const history = useHistory();
   const [showModal, setShowModal] = useState(false);
 
   function handleChange(event) {
@@ -87,6 +87,19 @@ function NewBuried() {
 
   return (
     <div className="container">
+      <div>
+        <button
+          onClick={() => {
+            history.go(-1);
+          }}
+          style={{ backgroundColor: "#191926", border: "none" }}
+        >
+          <i
+            className="mr-5 mt-5 fas fa-angle-left"
+            style={{ fontSize: "5em", color: "#c8955b" }}
+          ></i>
+        </button>
+      </div>
       <div className="container d-flex align-items-center mt-5">
         <div style={divStyle}></div>
         <div
@@ -101,10 +114,10 @@ function NewBuried() {
           />
           <ConfirmationModal
             show={showModal}
-            title={`${state.name} added!`}
-            mainMessage="Do you wish to add another burial?"
-            closeModal="Add another burial"
-            redirectPageButton="See grave page"
+            title={`Sepultamento adicionado!`}
+            mainMessage="Você gostaria de adicionar outro sepultamento?"
+            closeModal="Sim"
+            redirectPageButton="Não"
             handleClose={() => setShowModal(false)}
             action={`/cemetery/${cemetery}/grave/${grave}`}
           />
