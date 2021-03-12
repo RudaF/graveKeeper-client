@@ -1,4 +1,4 @@
-import { Navbar, Nav, NavDropdown } from "react-bootstrap";
+import { Navbar, Nav } from "react-bootstrap";
 import { AuthContext } from "../contexts/authContext";
 import { useContext } from "react";
 import { useHistory } from "react-router-dom";

@@ -32,7 +32,7 @@ function Signup(props) {
 
     try {
       const response = await api.post("/signup", state);
-
+      console.log(response);
       setErrors({ name: "", password: "", email: "" });
       props.history.push("/auth/login");
     } catch (err) {

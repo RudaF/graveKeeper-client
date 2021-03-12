@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-import { AuthContext } from "../../contexts/authContext";
-import { useContext } from "react";
 
 import api from "../../apis/api";
 
@@ -24,7 +22,6 @@ const centeredText = {
 };
 
 function BuriedDetail() {
-  const authContext = useContext(AuthContext);
   const { cemetery, grave, id } = useParams();
   const [state, setState] = useState({
     name: "",
@@ -45,7 +42,6 @@ function BuriedDetail() {
   useEffect(() => {
     async function fetchGrave() {
       try {
-        console.log("oi");
         const response = await api.get(`/buried/${id}`);
         console.log(response);
         setState({ ...response.data });
@@ -54,7 +50,7 @@ function BuriedDetail() {
       }
     }
     fetchGrave();
-  }, []);
+  }, [id]);
 
   function formatDate(date) {
     return date.slice(8, 10) + "/" + date.slice(5, 7) + "/" + date.slice(0, 4);

@@ -1,9 +1,9 @@
-import { useState, useContext } from "react";
-import { useHistory } from "react-router-dom";
-import { Link, useParams } from "react-router-dom";
+import { useState } from "react";
+
+import { useParams } from "react-router-dom";
 
 import api from "../../apis/api";
-import { AuthContext } from "../../contexts/authContext";
+
 import ConfirmationModal from "../../components/ConfirmationModal";
 
 import GraveForm from "./GraveForm";
@@ -29,7 +29,6 @@ function NewGrave() {
 
   const [showModal, setShowModal] = useState(false);
 
-  const authContext = useContext(AuthContext);
   const { cemetery } = useParams();
 
   function handleChange(event) {

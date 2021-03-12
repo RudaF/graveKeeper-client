@@ -1,8 +1,6 @@
-import { useState, useContext } from "react";
-import { useHistory } from "react-router-dom";
+import { useState } from "react";
 
 import api from "../../apis/api";
-import { AuthContext } from "../../contexts/authContext";
 
 import ConfirmationModal from "../../components/ConfirmationModal";
 import CemeteryForm from "./CemeteryForm";
@@ -28,9 +26,6 @@ function NewCemetery() {
   });
 
   const [showModal, setShowModal] = useState(false);
-
-  const history = useHistory();
-  const authContext = useContext(AuthContext);
 
   function handleChange(event) {
     if (event.target.files) {

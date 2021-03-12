@@ -1,8 +1,5 @@
 import { useState, useEffect } from "react";
 import { Link, useParams, useHistory } from "react-router-dom";
-import { AuthContext } from "../../contexts/authContext";
-import { useContext } from "react";
-
 import api from "../../apis/api";
 
 import "../../../node_modules/bricks-css/dist/bricks.min.css";
@@ -11,7 +8,6 @@ import "../../assets/styles/cemetaryDetail.css";
 import "../../assets/styles/image.css";
 
 function GraveDetail() {
-  const authContext = useContext(AuthContext);
   const { cemetery, grave } = useParams();
   const [graveData, setGrave] = useState({
     description: "",
@@ -36,7 +32,7 @@ function GraveDetail() {
       }
     }
     fetchGrave();
-  }, []);
+  }, [grave]);
 
   return (
     <div className="full-height d-flex dark-bg wall ">

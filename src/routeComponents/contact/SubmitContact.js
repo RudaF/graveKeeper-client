@@ -1,8 +1,4 @@
-import { useState, useContext } from "react";
-import { useHistory } from "react-router-dom";
-
-import api from "../../apis/api";
-import { AuthContext } from "../../contexts/authContext";
+import { useState } from "react";
 
 import ConfirmationModal from "../../components/ConfirmationModal";
 import ContactForm from "./ContactForm";
@@ -25,9 +21,6 @@ function SubmitContact() {
   });
 
   const [showModal, setShowModal] = useState(false);
-
-  const history = useHistory();
-  const authContext = useContext(AuthContext);
 
   function handleChange(event) {
     const stateBkp = { ...state };

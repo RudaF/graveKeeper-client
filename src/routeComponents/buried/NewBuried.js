@@ -1,8 +1,7 @@
-import { useState, useContext } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
 
 import api from "../../apis/api";
-import { AuthContext } from "../../contexts/authContext";
 
 import ConfirmationModal from "../../components/ConfirmationModal";
 import BuriedForm from "./BuriedForm";
@@ -32,10 +31,8 @@ function NewBuried() {
     situation: "",
   });
   const { cemetery, grave } = useParams();
-  // const history = useHistory();
-  const [showModal, setShowModal] = useState(false);
 
-  const authContext = useContext(AuthContext);
+  const [showModal, setShowModal] = useState(false);
 
   function handleChange(event) {
     if (event.target.files) {

@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
-import { AuthContext } from "../../contexts/authContext";
-import { useContext } from "react";
 
 import api from "../../apis/api";
 
@@ -11,7 +9,6 @@ import "../../assets/styles/cemetaryDetail.css";
 import "../../assets/styles/image.css";
 
 function CemeteryDetail() {
-  const authContext = useContext(AuthContext);
   const { cemetery } = useParams();
   const [cemeteryData, setCemetery] = useState({
     name: "",

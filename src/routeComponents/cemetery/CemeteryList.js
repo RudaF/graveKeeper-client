@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { AuthContext } from "../../contexts/authContext";
-import { useContext } from "react";
+
 import "../../assets/styles/image.css";
 
 import api from "../../apis/api";
 
 function CemeteryList() {
-  const authContext = useContext(AuthContext);
+  // const authContext = useContext(AuthContext);
   const [userCemeteries, setCemeteries] = useState([]);
   const history = useHistory();
 
@@ -49,6 +48,7 @@ function CemeteryList() {
           >
             <div className="d-flex">
               <img
+                alt={cemetery.name}
                 className="img-size"
                 style={{ width: "100px", height: "100px" }}
                 src={cemetery.picture}
