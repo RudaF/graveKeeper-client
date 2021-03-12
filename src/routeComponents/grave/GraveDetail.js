@@ -70,6 +70,7 @@ function GraveDetail() {
             Ocupação:{" "}
             {Array.from({ length: graveData.maxCapacity }).map((_, i) => (
               <i
+                key={i}
                 className="fas fa-user"
                 style={{
                   color: i < graveData.buried.length ? "red" : "green",
@@ -97,9 +98,10 @@ function GraveDetail() {
         {graveData.buried
           ? graveData.buried.map((buried) => (
               <Link
+                key={buried._id}
                 id={buried._id}
                 to={`/cemetery/${cemetery}/grave/${grave}/buried/${buried._id}`}
-                class="list-group-item list-group-item-action "
+                className="list-group-item list-group-item-action "
                 aria-current="true"
               >
                 <div className="d-flex align-items-center">
