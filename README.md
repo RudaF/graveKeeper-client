@@ -1,31 +1,23 @@
-![logo_ironhack_blue 7](https://user-images.githubusercontent.com/23629340/40541063-a07a0a8a-601a-11e8-91b5-2f13e4e6b441.png)
+# GraveKeeper
 
-# React IronPlate
+## About the App
 
-Esse boilerplate já inclui:
+GraveKeeper is an agile, effective, reliable and modern application designed for the management of cemeteries.
+This is an app built in React as a part of an Ironhack project.
 
-- Pré-configuração do Axios para injeção de cabeçalhos de autenticação e BaseURL
-- Context para armazenar state de usuário logado
-- Forms de Login e Signup
-- Roteamento básico
-- Componente de rota protegida
+## So what is it made for?
 
-## Para Começar
+GraveKeeper let's you control all aspects of a cemetery, from graves to burials and it's installments. The user is able to add, remove and edit graves acording to it's change of status.
 
-- Faça o fork e clone deste repositório
+## About the creator
 
-## Instalação
+I am a bachelor in mathematics and a student at Ironhack!
 
-```shell
-$ npm install
-```
+## Signup now!
 
-## Deploy no Netlify
+You can see the app and contact me [here!](https://gravekeeper.netlify.app)
+You can see our REST API on [github!](https://github.com/RudaF/graveKeeper-client)
 
-1. Faça login no Netlify e selecione seu repositório
-2. Em 'Deploy settings > build command' escreva: CI=false npm run build
-3. Em 'publish directory' escreva: build/
-4. Adicione uma environment variable (variável de ambiente) REACT_APP_API_BASE com a URL da sua API funcionando no Heroku
-5. Adicione a URL do seu app hospedado no Netlify nas variáveis de ambiente do backend no Heroku
+## Find out more about this project
 
-Happy coding! 💙
+You can find out more [here!](https://docs.google.com/presentation/d/1YYH-lFC3HmdlQyCqpqVznLZJd3tpKNb0IoNRiTlre0E/edit?usp=sharing)
