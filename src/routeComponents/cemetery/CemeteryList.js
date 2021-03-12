@@ -41,6 +41,7 @@ function CemeteryList() {
       <div>
         {userCemeteries.map((cemetery) => (
           <Link
+            key={cemetery._id}
             id={cemetery._id}
             to={`/cemetery/${cemetery._id}`}
             className="list-group-item list-group-item-action "
