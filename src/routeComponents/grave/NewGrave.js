@@ -20,7 +20,7 @@ const form = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   color: "black",
-  width: "20%",
+  width: "40%",
   fontFamily: "Playfair Display, serif",
   backgroundColor: "white",
 };
